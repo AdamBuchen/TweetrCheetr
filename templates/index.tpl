@@ -3,6 +3,12 @@
 	<title>Some awesome page</title>
 </head>
 <body>
-Hi there
+{% if username %}
+	Hi there, {{ username }}<br />
+	<a href="/logout">Log Out</a>
+{% else %}
+	<a href="/login">Log In To Twitter</a>
+{% endif %}
+
 </body>
 </html
