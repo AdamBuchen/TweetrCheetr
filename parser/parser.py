@@ -339,9 +339,9 @@ for idx, tweet_info in enumerate(sorted_top_retweeted):
 	tweet_id = tweet_info[0]
 	num_retweets = int(tweet_info[1])
 	single_tweet = get_remote_tweet(twitter_username,tweet_id,output_path,{})
-	tweet_text = str(single_tweet["text"])
+	tweet_text = single_tweet["text"]
 	tweet_timestamp = str(single_tweet["timestamp"])
-	print rank + ": " + tweet_text + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
+	print rank + ": " + tweet_text.encode("utf-8") + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
 
 
 print "\n\n"
@@ -353,9 +353,9 @@ for idx, tweet_info in enumerate(sorted_top_favorited):
 	tweet_id = tweet_info[0]
 	num_retweets = int(tweet_info[1])
 	single_tweet = get_remote_tweet(twitter_username,tweet_id,output_path,{})
-	tweet_text = str(single_tweet["text"])
+	tweet_text = single_tweet["text"]
 	tweet_timestamp = str(single_tweet["timestamp"])
-	print rank + ": " + tweet_text + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
+	print rank + ": " + tweet_text.encode("utf-8") + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
 
 
 print "\n\n"
@@ -367,9 +367,9 @@ for idx, tweet_info in enumerate(sorted_top_replied):
 	tweet_id = tweet_info[0]
 	num_retweets = int(tweet_info[1])
 	single_tweet = get_remote_tweet(twitter_username,tweet_id,output_path,{})
-	tweet_text = str(single_tweet["text"])
+	tweet_text = single_tweet["text"]
 	tweet_timestamp = str(single_tweet["timestamp"])
-	print rank + ": " + tweet_text + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
+	print rank + ": " + tweet_text.encode("utf-8") + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
 
 
 print "\n\n"
@@ -381,9 +381,9 @@ for idx, tweet_info in enumerate(sorted_top_interacted):
 	tweet_id = tweet_info[0]
 	num_retweets = int(tweet_info[1])
 	single_tweet = get_remote_tweet(twitter_username,tweet_id,output_path,{})
-	tweet_text = str(single_tweet["text"])
+	tweet_text = single_tweet["text"]
 	tweet_timestamp = str(single_tweet["timestamp"])
-	print rank + ": " + tweet_text + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
+	print rank + ": " + tweet_text.encode("utf-8") + " (" + tweet_timestamp + ") (" + str(num_retweets) + ")"
 
 print "\n\n"
 print "#### TOTAL RETWEETS: " + str(total_num_retweets) + " ####"
