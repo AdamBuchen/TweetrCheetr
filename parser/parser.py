@@ -2,10 +2,11 @@ import csv, re, nltk, string, sys, requests, json
 from operator import itemgetter
 from nltk.corpus import stopwords
 from HTMLParser import HTMLParser
+from dateutil import parser
 
 path = "tweets.csv"
 output_path = "/tmp"
-twitter_username = ""
+twitter_username = "SkylerFoxy"
 stop_words = stopwords.words('english')
 stop_words.append('http')
 
@@ -23,6 +24,8 @@ top_favorited_tweets = {}
 top_retweeted_tweets = {}
 top_replied_tweets = {}
 top_interacted_tweets = {}
+num_tweets_by_hour = {}
+num_tweets_by_day = {}
 total_num_retweets = 0
 total_num_favorites = 0
 total_num_replies = 0
@@ -177,7 +180,6 @@ for single_tweet in reversed(tweets):
 	i += 1
 	#print str(i) + " of " + str(total_num_tweets) + " - " + str(single_tweet["tweet_id"])	
 	single_tweet = get_remote_tweet(twitter_username,single_tweet["tweet_id"],output_path,single_tweet)
-	#print single_tweet
 	tweet_text = single_tweet["text"].lower()
 	substr = tweet_text[0:4]
 	if substr == "rt @":
@@ -214,7 +216,14 @@ for single_tweet in reversed(tweets):
 	except:
 		pass 
 
-	
+
+	dt = parser.parse(single_tweet["timestamp"])
+	year = int(dt.strftime("%Y"))
+	month = int(dt.strftime("%m"))
+	day = int(dt.strftime("%d"))
+	hour = int(dt.strftime("%H"))
+	day_of_week = int(dt.strftime("%w"))
+
 	num_retweets = int(single_tweet["num_retweets"])
 	num_favorites = int(single_tweet["num_favorites"])
 	num_replies = int(single_tweet["num_replies"])
